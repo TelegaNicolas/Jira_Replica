@@ -41,5 +41,12 @@ class Project {
         return result.rows[0] || null;
     }
 
+
+    static async findByName(name) {
+        const query = "SELECT * FROM projects WHERE name = $1";
+        const values = [name];
+        const result = await pool.query(query,values);
+        return result.rows[0] || null;
+    }
 }  
 module.exports = Project;
