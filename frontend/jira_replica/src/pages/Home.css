@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --black: #0a0a0a;
+  --black-2: #111111;
+  --black-3: #1a1a1a;
+  --orange: #f4622a;
+  --orange-dim: #f4622a22;
+  --orange-hover: #ff7a45;
+  --white: #f0ece4;
+  --white-dim: rgba(240, 236, 228, 0.5);
+  --white-faint: rgba(240, 236, 228, 0.08);
+  --border: rgba(240, 236, 228, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.home {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--black);
+  color: var(--white);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Background ── */
+.home__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.home__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+}
+
+.home__glow {
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 500px;
+  background: radial-gradient(ellipse at center, rgba(244, 98, 42, 0.15) 0%, transparent 70%);
+  filter: blur(40px);
+}
+
+/* ── Nav ── */
+.home__nav {
+  position: relative;
+  z-index: 1;
+  padding: 28px 40px;
+  display: flex;
+  align-items: center;
+}
+
+.home__nav-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--orange);
+  letter-spacing: 2px;
+  border: 1.5px solid var(--orange);
+  padding: 4px 10px;
+}
+
+/* ── Main ── */
+.home__main {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 24px;
+  gap: 32px;
+}
+
+.home__badge {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--orange);
+  border: 1px solid var(--orange-dim);
+  background: var(--orange-dim);
+  padding: 6px 16px;
+  animation: fadeUp 0.5s ease both;
+}
+
+.home__title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(4rem, 12vw, 9rem);
+  line-height: 0.95;
+  letter-spacing: -2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.home__title-line {
+  animation: fadeUp 0.5s ease both;
+  animation-delay: 0.1s;
+}
+
+.home__title-line--accent {
+  color: var(--orange);
+  animation-delay: 0.2s;
+  -webkit-text-stroke: 0px;
+  text-shadow: 0 0 80px rgba(244, 98, 42, 0.4);
+}
+
+.home__subtitle {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--white-dim);
+  line-height: 1.7;
+  max-width: 420px;
+  animation: fadeUp 0.5s ease both;
+  animation-delay: 0.3s;
+}
+
+/* ── Actions ── */
+.home__actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeUp 0.5s ease both;
+  animation-delay: 0.4s;
+}
+
+.home__btn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 14px 36px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.5px;
+}
+
+.home__btn--primary {
+  background: var(--orange);
+  color: var(--black);
+}
+
+.home__btn--primary:hover {
+  background: var(--orange-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(244, 98, 42, 0.35);
+}
+
+.home__btn--secondary {
+  background: transparent;
+  color: var(--white);
+  border: 1.5px solid var(--border);
+}
+
+.home__btn--secondary:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+  transform: translateY(-2px);
+}
+
+/* ── Footer ── */
+.home__footer {
+  position: relative;
+  z-index: 1;
+  padding: 24px 40px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--white-faint);
+  border-top: 1px solid var(--border);
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
