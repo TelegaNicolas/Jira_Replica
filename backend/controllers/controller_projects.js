@@ -5,7 +5,9 @@ require('dotenv').config();
 const getAllProjects = async (req,res) => {
     try {
         const allProjects = await Project.findAll();
-        if(!allProjects) return res.status(400).json({ message : "No projects has been found."});
+        if(!allProjects || allProjects.length === 0) {
+            return res.status(404).json({ message: 'No projects found.' });
+        }
         res.status(200).json(allProjects);
     } catch (error) {
         console.error(error);
@@ -17,7 +19,7 @@ const getProject = async (req,res) => {
     try {
         const { id } = req.params;
         const project = await Project.findById(id);
-        if(!project) return res.status(400).json({ message : "This project does not exist."});
+        if(!project) return res.status(404).json({ message : "This project does not exist."});
         res.status(200).json(project);
     } catch (error){
         console.error(error);
@@ -43,13 +45,16 @@ const createProject = async (req, res) => {
 
 const updateProject = async (req, res) => {
     try {
+        
         const { updates } = req.body;
         const { id } = req.params;
         const projectExist = await Project.findById(id);
-        if (!projectExist) return res.status(400).json({ message: 'This project does not exist.' });
-
+        if (!projectExist) return res.status(404).json({ message: 'This project does not exist.' });
+        if (projectExist.owner_id !== req.user.id) {
+            return res.status(403).json({ message: 'Forbidden' });
+        }       
         const project = await Project.update(id,updates);
-        res.status(201).json({ message: 'Project Updated', project });
+        res.status(200).json({ message: 'Project Updated', project });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Server error' });
@@ -61,10 +66,12 @@ const deleteProject = async (req, res) => {
         const { id } = req.params;
 
         const projectExist = await Project.findById(id);
-        if (!projectExist) return res.status(400).json({ message: 'This project does not exist.' });
-        
+        if (!projectExist) return res.status(404).json({ message: 'This project does not exist.' });
+        if (projectExist.owner_id !== req.user.id) {
+        return res.status(403).json({ message: 'Forbidden' });
+        }
         const project = await Project.delete(id);
-        res.status(201).json({ message: 'Project Deleted', project });
+        res.status(200).json({ message: 'Project Deleted', project });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Server error' });
