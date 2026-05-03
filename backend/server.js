@@ -4,14 +4,18 @@ const dotenv = require('dotenv');
 const fs = require('fs');
 const path = require('path');
 const pool = require('./config/config_database');
-const userRoutes = require('./routes/routes_users');
+const usersRoutes = require('./routes/routes_users');
+const projectsRoutes = require('./routes/routes_projects');
+const issuesRoutes = require('./routes/routes_issues');
 
 dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/users', userRoutes);
+app.use('/api/users', usersRoutes);
+app.use('/api/projects', projectsRoutes);
+app.use('/api/issues', issuesRoutes);
 
 app.get('/', (req, res) => {
   res.json({ message: 'Jira_Replica backend running' });
