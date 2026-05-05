@@ -15,6 +15,15 @@ class User {
     const result = await pool.query(query, [email]);
     return result.rows[0];
   }
+  
+  static async findAll() {
+  const query = 'SELECT id, email FROM users';
+  const result = await pool.query(query);
+  return result.rows;
 }
+
+}
+
+
 
 module.exports = User;
