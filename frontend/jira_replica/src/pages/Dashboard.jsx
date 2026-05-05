@@ -102,7 +102,8 @@ const Dashboard = () => {
 
   return (
     <div className="dash">
-      <Navbar />
+
+    <Navbar /> 
 
       <main className="dash__main">
         <div className="dash__header">
