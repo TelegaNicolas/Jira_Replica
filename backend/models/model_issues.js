@@ -2,13 +2,13 @@
  
  class Issue {
  
-    static async create(title, description, priority, project_id, assignee_id) {
+    static async create(title, description, priority, project_id, assignee_id, status = 'To Do') {
         const query = `
-            INSERT INTO issues (title, description, priority, project_id, assignee_id)
-            VALUES ($1, $2, $3, $4, $5)
+            INSERT INTO issues (title, description, priority, project_id, assignee_id, status)
+            VALUES ($1, $2, $3, $4, $5, $6)
             RETURNING *
         `;
-        const values = [title, description, priority, project_id, assignee_id];
+        const values = [title, description, priority, project_id, assignee_id, status];
         const result = await pool.query(query, values);
         return result.rows[0];
     }

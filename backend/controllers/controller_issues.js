@@ -9,8 +9,7 @@ const getAllIssues = async (req, res) => {
         if (!project) return res.status(404).json({ message: 'This project does not exist.' });
  
         const issues = await Issue.findAllByProject(project_id);
-        if (!issues || issues.length === 0)
-            return res.status(404).json({ message: 'No issues found for this project.' });
+        res.status(200).json(issues); 
  
         res.status(200).json(issues);
     } catch (error) {
@@ -34,12 +33,12 @@ const getIssue = async (req, res) => {
  
 const createIssue = async (req, res) => {
     try {
-        const { title, description, priority, project_id, assignee_id } = req.body;
+        const { title, description, priority, project_id, assignee_id, status } = req.body;
  
         const project = await Project.findById(project_id);
         if (!project) return res.status(404).json({ message: 'This project does not exist.' });
  
-        const issue = await Issue.create(title, description, priority, project_id, assignee_id);
+        const issue = await Issue.create(title, description, priority, project_id, assignee_id, status);
         res.status(201).json({ message: 'Issue created', issue });
     } catch (error) {
         console.error(error);
