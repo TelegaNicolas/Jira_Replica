@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+.profile {
+  font-family: 'DM Sans', sans-serif;
+  background: #0a0a0a;
+  color: #f0ece4;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Main ── */
+.profile__main {
+  flex: 1;
+  padding: 40px 48px;
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.profile__header {
+  margin-bottom: 40px;
+}
+
+.profile__title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+}
+
+/* ── Content ── */
+.profile__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Card ── */
+.profile__card {
+  background: #111111;
+  border: 1px solid rgba(240, 236, 228, 0.08);
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: fadeUp 0.4s ease both;
+}
+
+.profile__card-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.profile__card-desc {
+  font-size: 0.875rem;
+  color: rgba(240, 236, 228, 0.5);
+  margin-top: -8px;
+}
+
+/* ── Info ── */
+.profile__info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.profile__avatar {
+  width: 52px;
+  height: 52px;
+  background: #f4622a;
+  color: #0a0a0a;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.profile__email {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #f0ece4;
+}
+
+.profile__role {
+  font-size: 0.8rem;
+  color: rgba(240, 236, 228, 0.4);
+  margin-top: 2px;
+}
+
+/* ── Feedback ── */
+.profile__error {
+  background: rgba(244, 98, 42, 0.1);
+  border: 1px solid rgba(244, 98, 42, 0.3);
+  color: #f4622a;
+  padding: 12px 16px;
+  font-size: 0.875rem;
+}
+
+.profile__success {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+  padding: 12px 16px;
+  font-size: 0.875rem;
+}
+
+/* ── Form ── */
+.profile__form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.profile__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.profile__label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(240, 236, 228, 0.5);
+}
+
+.profile__input {
+  background: #1a1a1a;
+  border: 1px solid rgba(240, 236, 228, 0.1);
+  color: #f0ece4;
+  padding: 12px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+  width: 100%;
+}
+
+.profile__input::placeholder {
+  color: rgba(240, 236, 228, 0.25);
+}
+
+.profile__input:focus {
+  border-color: #f4622a;
+}
+
+/* ── Buttons ── */
+.profile__btn {
+  padding: 12px 24px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  align-self: flex-start;
+}
+
+.profile__btn--save {
+  background: #f4622a;
+  color: #0a0a0a;
+}
+
+.profile__btn--save:hover:not(:disabled) {
+  background: #ff7a45;
+  box-shadow: 0 4px 15px rgba(244, 98, 42, 0.3);
+}
+
+.profile__btn--save:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.profile__btn--logout {
+  background: transparent;
+  color: rgba(240, 236, 228, 0.6);
+  border: 1px solid rgba(240, 236, 228, 0.1);
+}
+
+.profile__btn--logout:hover {
+  border-color: #f4622a;
+  color: #f4622a;
+}
+
+/* ── Animation ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}

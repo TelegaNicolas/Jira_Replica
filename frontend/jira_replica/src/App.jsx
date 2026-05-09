@@ -6,6 +6,7 @@ import PrivateRoute from './components/PrivateRoute';
 import Dashboard from './pages/Dashboard';
 import Project from './pages/Project';
 import Issue from './pages/Issue';
+import Profile from './pages/Profile';
 
 
 
@@ -24,12 +25,15 @@ function App() {
               <Dashboard />
             </PrivateRoute>
           } />
-        <Route path="/projects/:id" element={
-            <PrivateRoute><Project /></PrivateRoute>
-          }/>
-      <Route path="/issues/:id" element={
-        <PrivateRoute><Issue /></PrivateRoute>
-      } />
+          <Route path="/projects/:id" element={
+              <PrivateRoute><Project /></PrivateRoute>
+            }/>
+          <Route path="/issues/:id" element={
+            <PrivateRoute><Issue /></PrivateRoute>
+          } />
+            <Route path="/profile" element={
+              <PrivateRoute><Profile /></PrivateRoute>
+          } />
       </Routes>
     </BrowserRouter>
   );

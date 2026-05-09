@@ -22,6 +22,11 @@ class User {
   return result.rows;
 }
 
+static async updatePassword(id, hashedPassword) {
+  const query = 'UPDATE users SET password = $1, updated_at = NOW() WHERE id = $2';
+  await pool.query(query, [hashedPassword, id]);
+}
+
 }
 
 
