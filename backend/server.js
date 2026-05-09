@@ -31,7 +31,7 @@ const initDB = async () => {
   try {
     const tables = ['users', 'projects', 'issues'];
     for (const table of tables) {
-      const filePath = path.join(__dirname, '../database', `${table}.sql`);
+      const filePath = path.join(__dirname, 'database', `${table}.sql`);
       const sql = fs.readFileSync(filePath, 'utf8');
       await pool.query(sql);
       console.log(`Table ${table} créée ou déjà existante.`);
