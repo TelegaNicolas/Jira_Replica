@@ -53,6 +53,11 @@ const updateIssue = async (req, res) => {
  
         const issue = await Issue.findById(id);
         if (!issue) return res.status(404).json({ message: 'This issue does not exist.' });
+
+        const project = await Project.findById(issue.project_id);
+        if (project.owner_id !== req.user.id) {
+            return res.status(403).json({ message: 'Forbidden' });
+        }
  
         const updatedIssue = await Issue.update(id, updates);
         res.status(200).json({ message: 'Issue updated', issue: updatedIssue });

@@ -5,6 +5,7 @@ import Register from './pages/Register';
 import PrivateRoute from './components/PrivateRoute';
 import Dashboard from './pages/Dashboard';
 import Project from './pages/Project';
+import Issue from './pages/Issue';
 
 
 
@@ -26,7 +27,9 @@ function App() {
         <Route path="/projects/:id" element={
             <PrivateRoute><Project /></PrivateRoute>
           }/>
-
+      <Route path="/issues/:id" element={
+        <PrivateRoute><Issue /></PrivateRoute>
+      } />
       </Routes>
     </BrowserRouter>
   );
