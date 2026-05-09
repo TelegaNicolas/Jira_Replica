@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --black: #0a0a0a;
+  --black-2: #111111;
+  --black-3: #1a1a1a;
+  --orange: #f4622a;
+  --orange-dim: #f4622a22;
+  --orange-hover: #ff7a45;
+  --white: #f0ece4;
+  --white-dim: rgba(240, 236, 228, 0.5);
+  --white-faint: rgba(240, 236, 228, 0.08);
+  --border: rgba(240, 236, 228, 0.1);
+  --font-title: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--black);
+  color: var(--white);
+}
