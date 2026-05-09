@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: teleganicolas/jira-backend:latest
+          ports:
+            - containerPort: 4000
+          env:
+            - name: PORT
+              value: "4000"
+            - name: DB_HOST
+              value: "postgres"
+            - name: DB_PORT
+              value: "5432"
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: jira-secrets
+                  key: DB_NAME
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: jira-secrets
+                  key: DB_USER
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: jira-secrets
+                  key: DB_PASSWORD
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: jira-secrets
+                  key: JWT_SECRET
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  selector:
+    app: backend
+  ports:
+    - port: 4000
+      targetPort: 4000
