@@ -26,6 +26,12 @@ jobs:
           push: true
           tags: teleganicolas/jira-backend:latest
 
+      - name: Test backend
+        run:
+              cd backend
+              npm install
+              npm test
+
       - name: Build and push frontend
         uses: docker/build-push-action@v5
         with:
@@ -34,3 +40,9 @@ jobs:
           tags: teleganicolas/jira-frontend:latest
           build-args: |
             VITE_API_URL=/api
+
+      - name: Test frontend
+        run: 
+              cd frontend/jira_replica
+              npm install
+              npm test
